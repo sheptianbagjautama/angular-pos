@@ -1,0 +1,30 @@
+.container-login {
+    background-image: linear-gradient(to right, #F7971E , #FFD200);
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.section-card-login {
+    margin: auto;
+    width: 30%;
+    height: 40%;
+    text-align: center;
+    background: #FFFFFF;
+    border-radius: 20px;
+    color: #000000;
+}
+
+.wrapper-form-login {
+    padding: 30px;
+}
+
+.button-login {
+    outline: none !important;
+    background-color: #F7971E;
+    border: none;
+}
+
+.button-login:hover  {
+    outline: none !important;
+    background-color: #FFD200;
+}
