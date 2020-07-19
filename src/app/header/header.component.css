@@ -1,0 +1,30 @@
+.wrapper-sidebar {
+    padding-left: 0px !important;
+  }
+  
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    left: -150px;
+  }
+  
+  .bg-header {
+    background-color: #01a163;
+    height: 70px;
+  }
+  
+  .navbar-brand {
+    color: #FFFFFF;
+  }
+  
+  .nav-link {
+    color: #FFFFFF !important;
+  }
+  
+  .active {
+    font-weight: bold;
+  }
+  
+  .fa-user-circle-o:before {
+    font-size: 30px;
+  }
+  
+  
