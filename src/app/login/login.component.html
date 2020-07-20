@@ -1,65 +1,72 @@
-<div class="container-fluid container-login">
-  <section class="row section-card-login">
-    <div class="col-md-12 wrapper-form-login">
-      <div class="wrapper-logo">
-        <img src="assets/logo.png" class="image-logo" />
-        <!-- <span>POS Restaurant</span> -->
-      </div>
-      <hr />
-      <div *ngIf="error" class="alert alert-danger" role="alert">
-        {{ error }}
-      </div>
-      <form class="auth-form" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            ngModel
-            name="email"
-            required
-            email
-            #email="ngModel"
-          />
-          <small *ngIf="!email.valid && email.touched" id="emailHelp" class="form-text text-danger">
-            Please insert your email, this input required.
-          </small>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            autocomplete="on"
-            id="password"
-            placeholder="Password"
-            ngModel
-            name="password"
-            required
-            minlength="6"
-            #password="ngModel"
-          />
-          <small *ngIf="!password.valid && password.touched" id="emailHelp" class="form-text text-danger">
-            Please insert your password, this input required. (Min Length : 6)
-          </small>
-        </div>
-
-        <button
-          [disabled]="!authForm.valid || isLoading"
-          type="submit"
-          class="btn btn-block button-login"
-        >
-          <img *ngIf="isLoading" src="assets/spinner.gif" class="loading-spinner" alt="spinner">
-          {{ isLoading ? "Loading..." : "Login" }}
-        </button>
-        <button type="button" class="btn btn-block button-register">
-          Register
-          
-        </button>
-      </form>
-    </div>
-  </section>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  {{ error }}
 </div>
+<form class="auth-form" #authForm="ngForm" (ngSubmit)="onSubmitLogin(authForm)">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      ngModel
+      name="email"
+      required
+      email
+      #email="ngModel"
+    />
+    <small
+      *ngIf="!email.valid && email.touched"
+      id="emailHelp"
+      class="form-text text-danger"
+    >
+      Please insert your email, this input required.
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      autocomplete="on"
+      id="password"
+      placeholder="Password"
+      ngModel
+      name="password"
+      required
+      minlength="6"
+      #password="ngModel"
+    />
+    <small
+      *ngIf="!password.valid && password.touched"
+      id="emailHelp"
+      class="form-text text-danger"
+    >
+      Please insert your password, this input required. (Min Length : 6)
+    </small>
+  </div>
+
+  <button
+    [disabled]="!authForm.valid || isLoading"
+    type="submit"
+    class="btn btn-block button-login"
+  >
+    <img
+      *ngIf="isLoading"
+      src="assets/spinner.gif"
+      class="loading-spinner"
+      alt="spinner"
+    />
+    {{ isLoading ? "Loading..." : ButtonMessage }}
+  </button>
+
+  <div class="wrapper-link-auth">
+    <a 
+      routerLink="/auth/register"
+      class="link-auth"
+    >
+      Buat Akun ?
+    </a>
+  </div>
+</form>

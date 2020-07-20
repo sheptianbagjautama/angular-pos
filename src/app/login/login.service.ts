@@ -4,11 +4,23 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './user.model';
+import { stringify } from '@angular/compiler/src/util';
 
 export interface LoginResponseData {
     access_token:string;
     token_type:string;
     expires_in:number;
+}
+
+export interface RegisterResponseData{
+    message:string,
+    user:{
+        name:string,
+        email:string,
+        updated_at:string,
+        created_at:string,
+        id:number
+    }
 }
 
 @Injectable({providedIn:'root'})
@@ -39,6 +51,22 @@ export class LoginService {
                     +responseData.expires_in
                 );
             })
+        );
+    }
+
+    register(name:string, email:string, password:string, password_confirmation:string){
+        return this.http
+        .post<RegisterResponseData>(
+            'http://localhost:8000/api/auth/register',
+            {
+                name:name,
+                email:email,
+                password:password,
+                password_confirmation:password_confirmation
+            }
+        )
+        .pipe(
+            catchError(this.handleError)
         );
     }
 
@@ -102,7 +130,7 @@ export class LoginService {
     logout(){
         // set data user menjadi null
         this.user.next(null);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth']);
         localStorage.removeItem('userData');
         if (this.tokenExpirationTimer) {
             clearTimeout(this.tokenExpirationTimer);

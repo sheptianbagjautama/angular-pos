@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { LoginService, LoginResponseData } from './login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,9 @@ export class LoginComponent implements OnInit {
 
   error:string = null;
   isLoading = false;
+  ButtonMessage = 'Login';
+  ButtonSwitchMessage = 'Sign Up';
+  isLoginMode = true;
 
   constructor(private loginService:LoginService,
               private router:Router) { }
@@ -19,10 +23,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form:NgForm){
+  onSubmitLogin(form:NgForm){
+    if (!form.valid) {
+      return;
+    }
+    this.error = null;
     this.isLoading = true;
     const email = form.value.email;
     const password = form.value.password;
+    if (!this.isLoginMode) {
+      const name = form.value.name;
+    }
 
     this.loginService.login(email, password)
       .subscribe(responseData => {
@@ -35,6 +46,21 @@ export class LoginComponent implements OnInit {
         this.error = errorData;
         this.isLoading = false;
       })
+  }
+
+  onSubmitRegister(form:NgForm){
+
+  }
+
+  onSwitchMode(){
+    this.isLoginMode = !this.isLoginMode;
+    if (this.isLoginMode) {
+      this.ButtonMessage = 'Login';
+      this.ButtonSwitchMessage = "Sign Up";
+    } else {
+      this.ButtonMessage = 'Sign Up';
+      this.ButtonSwitchMessage = "Login";
+    }
   }
 
 }

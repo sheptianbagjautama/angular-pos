@@ -1,23 +1,4 @@
-.container-login {
-    /* background-image: linear-gradient(to right, #01a163 , #13e796); */
-    background: #01a163;
-    height: 100vh;
-    padding-top: 100px;
-}
 
-.section-card-login {
-    margin: auto;
-    width: 30%;
-    /* height: 40%; */
-    /* text-align: center; */
-    background: #FFFFFF;
-    border-radius: 20px;
-    color: #000000;
-}
-
-.wrapper-form-login {
-    padding: 30px;
-}
 
 .button-login {
     /* margin-top: 20px; */
@@ -25,13 +6,13 @@
     background-color: #F7971E;
     border: none;
     color: #FFFFFF;
-    height: 70px;
+    /* height: 70px; */
     font-weight: bold;
     font-size: 19px ;
 }
 
 .loading-spinner {
-    width: 60px;
+    width: 30px;
     margin-left: -30px;
 }
 
@@ -40,7 +21,20 @@
     background-color: #FFD200;
 }
 
-.button-register {
+input.ng-invalid.ng-touched {
+    border: 1px solid rgb(233, 58, 58);
+}
+
+.wrapper-link-auth {
+    margin-top: 10px;
+}
+
+.link-auth {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* .button-register {
     outline: none !important;
     background-color: #1fb8ff;
     border: none;
@@ -55,36 +49,14 @@
     background-color: #49d5ff;
 }
 
-.wrapper-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.wrapper-register {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
-.wrapper-logo span {
-    font-size: 50px;
-    font-weight: 400;
-    color: #bdbcbc;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.image-logo {
-    width: 120px;
-    object-fit: cover;
-}
-
-input.ng-invalid.ng-touched {
-    border: 1px solid rgb(233, 58, 58);
-}
+.wrapper-register a {
+    cursor: pointer;
+} */
 
 
-/* 
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-    .wrapper-logo span {
-        font-size: 20px;
-    }
-}

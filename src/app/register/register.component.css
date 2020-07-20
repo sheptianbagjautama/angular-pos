@@ -1,0 +1,33 @@
+.loading-spinner {
+    width: 30px;
+    margin-left: -30px;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid rgb(233, 58, 58);
+}
+
+.wrapper-link-auth {
+    margin-top: 10px;
+}
+
+.link-auth {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-register {
+    outline: none !important;
+    background-color: #1fb8ff;
+    border: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 20px ;
+}
+
+.button-register:hover  {
+    outline: none !important;
+    background-color: #49d5ff;
+}
+
+

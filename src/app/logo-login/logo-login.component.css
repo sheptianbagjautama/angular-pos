@@ -1,0 +1,27 @@
+.wrapper-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper-logo .image-logo {
+    width: 150px;
+}
+
+.wrapper-logo span {
+    font-size: 50px;
+    font-weight: 400;
+    color: #bdbcbc;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .wrapper-logo span {
+        font-size: 20px;
+    }
+}

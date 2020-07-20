@@ -1,0 +1,106 @@
+    <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    <div *ngIf="message" class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+  <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          aria-describedby="nameHelp"
+          placeholder="Enter name"
+          formControlName="name"
+        />
+        <small
+          *ngIf="!f.name.valid && f.name.touched"
+          id="nameHelp"
+          class="form-text text-danger"
+        >
+        Please insert your name, this input required.
+        </small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        formControlName="email"
+      />
+      <small
+        *ngIf="!f.email.valid && f.email.touched"
+        id="emailHelp"
+        class="form-text text-danger"
+      >
+        Please insert your email, this input required.
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        autocomplete="on"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <small
+        *ngIf="!f.password.valid && f.password.touched"
+        id="emailHelp"
+        class="form-text text-danger"
+      >
+        Please insert your password, this input required. (Min Length : 6)
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password Confirmation</label>
+      <input
+        type="password"
+        class="form-control"
+        autocomplete="on"
+        id="password_confirmation"
+        placeholder="Password Confirmation"
+        formControlName="password_confirmation"
+      />
+      <small
+        *ngIf="!f.password_confirmation.valid && f.password_confirmation.touched"
+        id="emailHelp"
+        class="form-text text-danger"
+      >
+        <p *ngIf="f.password_confirmation.errors.required">Please insert your password confirmation, this input required. (Min Length : 6)</p>
+        <p *ngIf="f.password_confirmation.errors.confirmedValidator">Password and Confirm Password must be match.</p>
+        
+      </small>
+    </div>
+  
+    <button
+      [disabled]="!registerForm.valid || isLoading"
+      type="submit"
+      class="btn btn-block button-register"
+    >
+      <img
+        *ngIf="isLoading"
+        src="assets/spinner.gif"
+        class="loading-spinner"
+        alt="spinner"
+      />
+      {{ isLoading ? "Loading..." : 'Sign Up' }}
+    </button>
+  
+    <div class="wrapper-link-auth">
+      <a 
+        routerLink="/auth"
+        class="link-auth"
+      >
+        Login ?
+      </a>
+    </div>
+  </form>
+  
