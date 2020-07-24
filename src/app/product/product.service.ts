@@ -58,6 +58,29 @@ export class ProductService {
         );
     }
 
+    getSearchBySubCategoriesAPI(sub_category_id){
+        return this.http.get<any>(
+            `http://localhost:8000/api/search-subcategory/${sub_category_id}`
+        )
+    }
+
+    getSearchByCategoriesAPI(category_id){
+        return this.http.get<any>(
+            `http://localhost:8000/api/search-category/${category_id}`
+        )
+    }
+
+    getSearchByNameAPI(name){
+        if (!name) {
+            return this.http.get<any>(
+                'http://localhost:8000/api/products'
+            );
+        }
+        return this.http.get<any>(
+            `http://localhost:8000/api/search-name/${name}`
+        )
+    }
+
     setProducts(products:any){
         this.products = products;
         this.productsChanged.next(this.products.slice());

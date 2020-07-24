@@ -3,7 +3,7 @@
       <div class="col-md-9">
         <section class="wrapper-categories">
           <ul class="list-unstyled">
-            <li class="link-category" *ngFor="let category of categories; let i = index">
+            <li class="link-category" *ngFor="let category of categories; let i = index" (click)="onSearchCategory(category.id)">
               {{ category.name | titlecase }}
             </li>
           </ul>
@@ -13,13 +13,13 @@
 
         <section class="wrapper-search-product">
           <div class="search-product">
-            <input type="text" class="form-control input-search-product" placeholder="Search by products">
+            <input type="text" #nameSearchInput class="form-control input-search-product" placeholder="Search by products">
           </div>
         </section>
 
         <section class="wrapper-sub-categories">
           <div class="row">
-            <div class="col" *ngFor="let subcategory of subcategories; let i = index">
+            <div class="col" *ngFor="let subcategory of subcategories; let i = index" (click)="onSearchSubCategory(subcategory.id)">
               <div class="card-sub-categories">
                 <img [src]="subcategory.image" [alt]="subcategory.name">
                   {{ subcategory.name | titlecase }}
