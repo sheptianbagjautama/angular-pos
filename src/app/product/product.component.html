@@ -3,11 +3,9 @@
       <div class="col-md-9">
         <section class="wrapper-categories">
           <ul class="list-unstyled">
-            <li class="link-category">Food</li>
-            <li class="link-category">Bars</li>
-            <li class="link-category">Clothes</li>
-            <li class="link-category">Apparels</li>
-            <li class="link-category">Fashions</li>
+            <li class="link-category" *ngFor="let category of categories; let i = index">
+              {{ category.name | titlecase }}
+            </li>
           </ul>
           <br>
           <hr class="line-break">
@@ -21,76 +19,10 @@
 
         <section class="wrapper-sub-categories">
           <div class="row">
-            <div class="col">
+            <div class="col" *ngFor="let subcategory of subcategories; let i = index">
               <div class="card-sub-categories">
-                <img src="assets/subcategories/burger.png" alt="">
-                  Burger
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/hot-cup.png" alt="">
-                  Coffe
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/mug.png" alt="">
-                  Tea
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/bubble-tea.png" alt="">
-                  Bubble
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/juice.png" alt="">
-                  Juice
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/ramen.png" alt="">
-                  Ramen
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/steak.png" alt="">
-                  Steak
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/chicken-leg.png" alt="">
-                  Chicken
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/burrito.png" alt="">
-                  Burito
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/ice-cream.png" alt="">
-                  Ice Cream
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/donut.png" alt="">
-                  Donut
-              </div>
-            </div>
-            <div class="col">
-              <div class="card-sub-categories">
-                <img src="assets/subcategories/macaron.png" alt="">
-                  Macaron
+                <img [src]="subcategory.image" [alt]="subcategory.name">
+                  {{ subcategory.name | titlecase }}
               </div>
             </div>
           </div>
@@ -98,160 +30,30 @@
 
         <section class="wrapper-products">
           <div class="row">
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
+          
+            <div class="col-3" *ngFor="let product of products; let i = index">
+              <span class="notify-badge-discount" *ngIf="product.discount !== null ">Discount {{ product.discount }}%</span>
               <span class="notify-badge-wishlist">
                 <i class="fa fa-heart-o" aria-hidden="true"></i>
               </span>
               <div class="card-products">
-                <img src="assets/burgers/1.png" alt="">
-                Burger Testing 1
-                <span>Rp. 23.000</span>
+                <img [src]="product.image" [alt]="product.name">
+                {{ product.name }}
+
+                <div *ngIf="product.discount !== null; then thenBlock else elseBlock"></div>
+                
+                <ng-template #thenBlock>
+                  <span class="text-discount">{{ product.original_price | currency:'Rp. ' }}</span>
+                  <span >{{ product.discount_price | currency:'Rp. ' }}</span>
+                </ng-template>
+
+                <ng-template #elseBlock>
+                  <span >{{ product.original_price | currency:'Rp. ' }}</span>
+                </ng-template>
               </div>
             </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/2.png" alt="">
-                Burger Testing 2
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/3.png" alt="">
-                Burger Testing 3
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/4.png" alt="">
-                Burger Testing 4
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/5.png" alt="">
-                Burger Testing 5
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/6.png" alt="">
-                Burger Testing 6
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/7.png" alt="">
-                Burger Testing 7
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
-            <div class="col-3">
-              <span class="notify-badge-discount">Discount 10%</span>
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products">
-                <img src="assets/burgers/8.png" alt="">
-                Burger Testing 8
-                <span>Rp. 23.000</span>
-              </div>
-            </div>
+
+
           </div>
         </section>
       </div>

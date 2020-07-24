@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginInterceptorService } from './login/login-interceptor.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +13,8 @@ import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoLoginComponent } from './logo-login/logo-login.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoginService } from './login/login.service';
+import { ProductItemComponent } from './product/product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { AuthComponent } from './auth/auth.component';
     HeaderComponent,
     RegisterComponent,
     LogoLoginComponent,
-    AuthComponent
+    AuthComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,14 @@ import { AuthComponent } from './auth/auth.component';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoginInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

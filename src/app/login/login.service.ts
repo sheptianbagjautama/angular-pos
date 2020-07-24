@@ -4,7 +4,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './user.model';
-import { stringify } from '@angular/compiler/src/util';
 
 export interface LoginResponseData {
     access_token:string;

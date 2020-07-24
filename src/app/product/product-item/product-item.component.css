@@ -1,0 +1,52 @@
+.card-products {
+    margin-bottom: 20px;
+    border: 1px solid #dddcdc;
+    height: 270px;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  
+  .card-products:hover {
+    border: 1px solid #01a163;
+  }
+  
+  .card-products img {
+    width: 200px;
+    height: 200px;
+    padding-top: 20px;
+    display: block;
+    margin: auto;
+    object-fit: contain;
+  }
+  
+  .card-products span {
+    font-size: 18px;
+    color: #01a163;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .notify-badge-discount {
+    position: absolute;
+    left: 30px;
+    top: 20px;
+    background: #01a163;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .notify-badge-wishlist {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    text-align: center;
+    color: #dddcdc;
+    font-size: 25px;
+  }
+  
+  .notify-badge-wishlist:hover {
+    color: #f53232;
+  }

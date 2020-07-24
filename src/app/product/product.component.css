@@ -63,7 +63,7 @@
   .card-products {
     margin-bottom: 20px;
     border: 1px solid #dddcdc;
-    height: 270px;
+    height: 300px;
     overflow: hidden;
     border-radius: 20px;
   }
@@ -86,6 +86,14 @@
     color: #01a163;
     font-weight: bold;
     display: block;
+  }
+
+  .card-products .text-discount {
+    font-size: 13px;
+    color: #ff0000;
+    font-weight: bold;
+    display: block;
+    text-decoration: line-through;
   }
   
   .notify-badge-discount {
