@@ -81,6 +81,15 @@ export class ProductService {
         )
     }
 
+    postPayment(requestCart) {
+        return this.http.post<any>(
+            'http://localhost:8000/api/orders',
+            {
+                carts:requestCart
+            }
+        );
+    }
+
     setProducts(products:any){
         this.products = products;
         this.productsChanged.next(this.products.slice());

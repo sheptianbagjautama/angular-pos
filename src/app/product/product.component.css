@@ -24,7 +24,6 @@
   .input-search-product {
     border-radius: 20px;
     background-color: #f5f5f5;
-    width: 40%;
     color: #8d8d8d;
   }
   
@@ -39,6 +38,7 @@
     height: 80px;
     text-align: center;
     border-radius: 10px;
+    font-size: 13px;
   }
   
   .card-sub-categories:hover {
@@ -57,7 +57,7 @@
     text-align: center;
     overflow: scroll;
     overflow-x: hidden;
-    height: 80vh;
+    height: 70vh;
   }
   
   .card-products {
@@ -66,6 +66,10 @@
     height: 300px;
     overflow: hidden;
     border-radius: 20px;
+  }
+
+  .card-products:hover {
+    cursor: pointer;
   }
   
   .card-products:hover {
@@ -122,7 +126,7 @@
   }
   
   .wrapper-carts {
-      height: 60%;
+      height: 75%;
       overflow: scroll;
       overflow-x: hidden;
   }
@@ -147,6 +151,7 @@
       width: 50px;
       margin-left: 10px;
       margin-right: 10px;
+      text-align: center;
   }
   
   .input-discount-payment {
@@ -186,6 +191,69 @@
   .btn-cancel-payment:focus {
       background: #fb6c6c;
   }
+
+  .column-qty {
+    width: 10%;
+  }
+
+  .column-total {
+    width: 30%;
+  }
+
+  .column-name {
+    width: 35%;
+  }
+
+  .wrapper-nocart {
+    text-align: center;
+    margin-top: 40%;
+  }
+
+  .wrapper-nocart img {
+    width: 200px;
+  }
+
+  .wrapper-carts span {
+    display: block;
+    font-size: 30px;
+
+  }
+
+  .btn-clear {
+    background: #fb8a1f;
+    color: #FFFFFF;
+  }
+
+  .btn-clear:hover {
+    background-color:#ffa149;
+  }
+
+  .minus-cart {
+    cursor: pointer;
+  }
+
+  .plus-cart {
+    cursor: pointer;
+  }
+  
+  .trash-cart {
+    cursor: pointer;
+  }
+
+  .wrapper-no-products {
+    margin-top: 10%;
+  }
+
+  .wrapper-no-products img {
+    width: 300px;
+  }
+
+  .wrapper-no-products span {
+    display: block;
+    font-size: 30px;
+  }
+
+
   
   
   
