@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, pipe } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import Swal from 'sweetalert2/dist/sweetalert2';
 
 
 
@@ -98,5 +99,12 @@ export class ProductService {
 
     getProducts(){
         return this.products.slice();
+    }
+
+    testingsw(){
+        Swal.fire({
+            text: 'Hello!',
+            icon: 'success'
+          });
     }
 }

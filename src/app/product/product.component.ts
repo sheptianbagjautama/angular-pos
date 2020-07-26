@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductService } from './product.service';
 import { fromEvent } from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged, find, timeout } from 'rxjs/operators';
+import Swal from 'sweetalert2/dist/sweetalert2';
+import { SweetalertService } from '../shared/Sweetalert.service'
 
 @Component({
   selector: 'app-product',
@@ -16,8 +18,14 @@ export class ProductComponent implements OnInit {
   categories:any = [];
   carts:any = [];
   total_price:number = 0;
+  total_qty:number = 0;
+  isLoadingPayment:boolean = false;
+  isLoadingProduct:boolean = false;
 
-  constructor(private productService:ProductService) { }
+  constructor(
+    private productService:ProductService,
+    private sweetAlertService:SweetalertService
+    ) { }
 
   ngOnInit(): void { 
     this.onProducts();
@@ -39,20 +47,27 @@ export class ProductComponent implements OnInit {
         ,debounceTime(600)
         ,distinctUntilChanged()
       ).subscribe((name:string) => {
+        this.isLoadingProduct = true;
         this.productService.getSearchByNameAPI(name)
           .subscribe((responseData) => {
             this.products = [];
             this.products = responseData.data;
-          })
+            this.isLoadingProduct = false;
+          });
       })
   }
   
 
   onProducts(){
+    this.isLoadingProduct = true;
     this.productService.getProductsAPI()
     .subscribe((responseData:any) => {
       this.productService.setProducts(responseData.data);
       this.products = this.productService.getProducts();
+      // if (other) {
+      //   this.sweetAlertService.notifAlert('Success','Successfully clear filter !', 'success' );
+      // }
+      this.isLoadingProduct = false;
     });
   }
 
@@ -61,6 +76,7 @@ export class ProductComponent implements OnInit {
       .subscribe((responseData:any) => {
         this.subcategories = responseData.data;
       });
+      
   }
 
   onCategories(){
@@ -71,19 +87,25 @@ export class ProductComponent implements OnInit {
   }
 
   onSearchSubCategory(sub_category_id){
+    this.isLoadingProduct = true;
     this.productService.getSearchBySubCategoriesAPI(sub_category_id)
       .subscribe((responseData:any) => {
         this.products = [];
         this.products = responseData.data;
+        this.isLoadingProduct = false;
       });
+      
   }
 
   onSearchCategory(category_id){
+    this.isLoadingProduct = true;
     this.productService.getSearchByCategoriesAPI(category_id)
       .subscribe((responseData:any) => {
         this.products = [];
         this.products = responseData.data;
+        this.isLoadingProduct = false;
       });
+      
   }
 
   ClearFilter(){
@@ -206,38 +228,87 @@ export class ProductComponent implements OnInit {
     this.total_price = 0;
     storageCart.forEach(item => {
       this.total_price += item.total;
+      this.total_qty += item.qty;
     });
   }
 
   onCancelCart(){
-    localStorage.removeItem('arrayCarts');
-    this.carts = [];
-    this.total_price = 0;
+    Swal.fire({
+      title: 'Are you sure will cancel this cart ?',
+      text: 'You will not be able to recover this cart !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, cancel it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        localStorage.removeItem('arrayCarts');
+        this.carts = [];
+        this.total_price = 0;
+
+      Swal.fire(
+        'Deleted!',
+        'Your cart has been deleted.',
+        'success'
+      )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire(
+        'Cancelled',
+        'Your cart is safe :)',
+        'error'
+      )
+      }
+    });
   }
 
   onPayment(){
-    let storageCart = JSON.parse(localStorage.getItem('arrayCarts'));
-    storageCart.forEach(item => {
-        delete item.name;
-        delete item.price;
-        delete item.total;
+    Swal.fire({
+      title: 'Are you sure do payment ?',
+      text: 'You will not be able go back !',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, do pay!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        let storageCart = JSON.parse(localStorage.getItem('arrayCarts'));
+        storageCart.forEach(item => {
+            delete item.name;
+            delete item.price;
+            delete item.total;
+        });
+
+        this.isLoadingPayment = true;
+        this.productService.postPayment(storageCart)
+          .subscribe((responseData) => {
+            console.log(responseData);
+            localStorage.removeItem('arrayCarts');
+            this.carts = [];
+            this.total_price = 0;
+
+            Swal.fire(
+              'Success Pay!',
+              'Successfully made a payment.',
+              'success'
+            )
+            this.isLoadingPayment = false;
+          })
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your order still there :)',
+          'error'
+        )
+        this.isLoadingPayment = false;
+      }
     });
-
-    console.log(storageCart);
-
-    // let requestCart = {
-    //   carts:storageCart
-    // }
-
-    this.productService.postPayment(storageCart)
-      .subscribe((responseData) => {
-        console.log(responseData);
-      })
+    
   }
 
   onClearFilter(){
     this.onProducts();
   }
+
   
 
 
