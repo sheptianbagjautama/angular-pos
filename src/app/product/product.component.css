@@ -270,6 +270,315 @@
     margin-left: -30px;
 }
 
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1366 to 1440
+*/
+
+@media (min-width: 1366px) and (max-width: 1440px) {
+  .card-products img {
+    width: 140px;
+    height: 200px;
+    padding-top: 20px;
+    display: block;
+    margin: auto;
+    object-fit: contain;
+  }
+
+  .notify-badge-wishlist {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    text-align: center;
+    color: #dddcdc;
+    font-size: 25px;
+  }
+
+  .wrapper-categories li {
+    float: left;
+    padding: 5px 30px 10px 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a9b8b3;
+  }
+
+  .table {
+    font-size: 11.5px;
+  }
+
+  .wrapper-carts {
+    height: 70%;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .card-sub-categories {
+    /* padding: 10px;  */
+    /* border: 1px solid #f5f5f5; */
+    border: none;
+    display: block;
+    /* height: 80px; */
+    text-align: center;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+
+  .card-sub-categories:hover {
+    border: none;
+  }
+
+  .input-search-product {
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    color: #8d8d8d;
+    font-size: 13px;
+  }
+
+  .wrapper-sub-categories {
+    margin-top: 20px;
+    margin-right: 25px;
+  }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .card-products img {
+    width: 130px;
+    height: 200px;
+    padding-top: 20px;
+    display: block;
+    margin: auto;
+    object-fit: contain;
+  }
+
+  .notify-badge-wishlist {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    text-align: center;
+    color: #dddcdc;
+    font-size: 25px;
+  }
+
+  .wrapper-categories li {
+    float: left;
+    padding: 5px 30px 10px 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a9b8b3;
+  }
+
+  .table {
+    font-size: 10px;
+  }
+
+  .wrapper-carts {
+    height: 73%;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .card-sub-categories {
+    /* padding: 10px;  */
+    /* border: 1px solid #f5f5f5; */
+    border: none;
+    display: block;
+    /* height: 80px; */
+    text-align: center;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+
+  .card-sub-categories:hover {
+    border: none;
+  }
+
+  .input-search-product {
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    color: #8d8d8d;
+    font-size: 13px;
+  }
+
+  .wrapper-sub-categories {
+    margin-top: 20px;
+    margin-right: 25px;
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .wrapper-categories li {
+    float: left;
+    padding: 5px 10px 5px 10px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #a9b8b3;
+  }
+  
+  .wrapper-categories li:hover {
+    color: #1cba7f;
+  }
+  
+  .wrapper-categories li:hover:after {
+    content: "";
+    color: #1cba7f;
+    display: block;
+    width: 30px;
+    margin: 0 auto;
+    border: 2px solid #1cba7f;
+    border-radius: 5px;
+  }
+
+  .input-search-product {
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    color: #8d8d8d;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.card-sub-categories img {
+  width: 25px;
+  display: block;
+  margin: auto;
+}
+
+.card-sub-categories {
+  padding: 5px;
+  border: 1px solid #f5f5f5;
+  display: block;
+  height: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 13px;
+  
+}
+
+.card-products img {
+  width: 110px;
+  height: 100px;
+  /* padding-top: 70px; */
+  display: block;
+  margin: auto;
+  object-fit: contain;
+}
+
+.card-products {
+  margin-bottom: 20px;
+  padding-top: 40px;
+  border: 1px solid #dddcdc;
+  height: 230px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-size: 11.5px;
+}
+
+.wrapper-products {
+  padding-right: 10px;
+  margin-top: 20px;
+  text-align: center;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 116vh;
+}
+
+
+.card-products .text-discount {
+  font-size: 12px;
+  color: #ff0000;
+  font-weight: bold;
+  display: block;
+  text-decoration: line-through;
+}
+
+.card-products span {
+  font-size: 13px;
+  color: #01a163;
+  font-weight: bold;
+  display: block;
+}
+
+.notify-badge-discount {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  background: #01a163;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  padding: 3px 5px;
+  font-size: 11px;
+}
+
+.notify-badge-wishlist {
+  position: absolute;
+  right: 25px;
+  top: 13.5px;
+  text-align: center;
+  color: #dddcdc;
+  font-size: 20px;
+}
+
+.wrapper-nocart img {
+  width: 120px;
+}
+
+.wrapper-rightbar-product {
+  background: #FFFFFF;
+  height: 70vh;
+  margin-top: 30px;
+}
+
+.table {
+  font-size: 10.5px;
+}
+
+.wrapper-col-carts {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.btn-payment {
+  background: #01a163;
+  color: #FFFFFF;
+  border: none;
+  height: 70px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.btn-cancel-payment {
+  background: #fd2d2d;
+  color: #FFFFFF;
+  border: none;
+  height: 70px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+
+
+
+
+
+
+}
+
+
+
+
   
 
 

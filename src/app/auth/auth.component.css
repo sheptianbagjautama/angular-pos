@@ -18,3 +18,24 @@
 .wrapper-form-login {
     padding: 30px;
 }
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    body {
+        overflow: scroll;
+    }
+
+    .section-card-login {
+        margin: auto;
+        background: #FFFFFF;
+        border-radius: 20px;
+        color: #000000;
+        padding: 20px;
+        width: 100%;
+    }
+  
+    .container-login {
+      background: #01a163;
+      height: 100vh;
+  }
+}

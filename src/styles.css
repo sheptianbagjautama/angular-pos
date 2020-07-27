@@ -2,3 +2,27 @@ body {
     overflow: hidden;
 }
 
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    body {
+        overflow: scroll;
+    }
+
+    .section-card-login {
+        margin: auto;
+        background: #FFFFFF;
+        border-radius: 20px;
+        color: #000000;
+        padding: 20px;
+    }
+  
+    .container-login {
+      background: #ffffff;
+      height: 100vh;
+  }
+}
+

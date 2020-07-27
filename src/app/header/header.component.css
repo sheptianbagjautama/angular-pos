@@ -13,6 +13,8 @@
   
   .navbar-brand {
     color: #FFFFFF;
+    font-weight: bold;
+    font-size: 25px;
   }
   
   .nav-link {
@@ -26,5 +28,7 @@
   .fa-user-circle-o:before {
     font-size: 30px;
   }
+
+
   
   

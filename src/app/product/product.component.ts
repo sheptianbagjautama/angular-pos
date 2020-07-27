@@ -226,6 +226,7 @@ export class ProductComponent implements OnInit {
   setTotalPrice(){
     let storageCart = JSON.parse(localStorage.getItem('arrayCarts'));
     this.total_price = 0;
+    this.total_qty = 0;
     storageCart.forEach(item => {
       this.total_price += item.total;
       this.total_qty += item.qty;
@@ -245,6 +246,7 @@ export class ProductComponent implements OnInit {
         localStorage.removeItem('arrayCarts');
         this.carts = [];
         this.total_price = 0;
+        this.total_qty = 0;
 
       Swal.fire(
         'Deleted!',
@@ -285,6 +287,7 @@ export class ProductComponent implements OnInit {
             localStorage.removeItem('arrayCarts');
             this.carts = [];
             this.total_price = 0;
+            this.total_qty = 0;
 
             Swal.fire(
               'Success Pay!',

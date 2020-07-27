@@ -39,7 +39,7 @@
       <section class="wrapper-sub-categories">
         <div class="row">
           <div
-            class="col cursor-link"
+            class="col-3 col-md cursor-link"
             *ngFor="let subcategory of subcategories; let i = index"
             (click)="onSearchSubCategory(subcategory.id)"
           >
@@ -61,7 +61,7 @@
 
          <ng-template #elseProduct>
           <ng-container *ngIf="products.length > 0; else elseProducts">
-            <div class="col-3" *ngFor="let product of products; let i = index" >
+            <div class="col-6 col-lg-4 col-md-4 col-xl-3" *ngFor="let product of products; let i = index" >
               <span
                 class="notify-badge-discount"
                 *ngIf="product.discount !== null"
@@ -109,8 +109,8 @@
     </div>
     <div class="col-md-4 wrapper-rightbar-product">
       <section class="wrapper-carts">
-        <div class="col-12">
-          <table class="table" *ngIf="carts.length > 0; else elseCart">
+        <div class="col-12" class="wrapper-col-carts">
+          <table class="table table-responsive" *ngIf="carts.length > 0; else elseCart">
             <thead>
               <tr>
                 <th class="column-no" scope="col">No</th>

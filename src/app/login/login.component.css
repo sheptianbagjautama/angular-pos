@@ -58,4 +58,20 @@ input.ng-invalid.ng-touched {
     cursor: pointer;
 } */
 
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .section-card-login {
+        margin: auto;
+        background: #FFFFFF;
+        border-radius: 20px;
+        color: #000000;
+        padding: 20px;
+    }
+  
+    .container-login {
+      background: #ffffff;
+      height: 100vh;
+  }
+}
+
 
