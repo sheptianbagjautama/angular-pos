@@ -35,7 +35,8 @@
     }
   
     .container-login {
-      background: #01a163;
+      background: #FFFFFF;
       height: 100vh;
+      padding-top: 50px;
   }
 }
