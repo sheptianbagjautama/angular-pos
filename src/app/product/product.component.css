@@ -418,6 +418,14 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
 
+  .wrapper-no-products[_ngcontent-wyu-c48] {
+    margin-top: 60%;
+  } 
+
+  .wrapper-no-products img {
+    width: 120px;
+  }
+
   .wrapper-categories li {
     float: left;
     padding: 5px 10px 5px 10px;

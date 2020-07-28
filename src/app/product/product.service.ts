@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject, pipe } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import Swal from 'sweetalert2/dist/sweetalert2';
+import { environment } from '../../environments/environment';
 
 
 
@@ -43,48 +44,48 @@ export class ProductService {
 
     getProductsAPI(){
         return this.http.get<any>(
-            'http://localhost:8000/api/products'
+            `${environment.baseURL}/api/products`
         );
     }
 
     getSubCategoriesAPI(){
         return this.http.get<any>(
-            'http://localhost:8000/api/subcategories'
+            `${environment.baseURL}/api/subcategories`
         );
     }
 
     getCategoriesAPI(){
         return this.http.get<any>(
-            'http://localhost:8000/api/categories'
+            `${environment.baseURL}/api/categories`
         );
     }
 
     getSearchBySubCategoriesAPI(sub_category_id){
         return this.http.get<any>(
-            `http://localhost:8000/api/search-subcategory/${sub_category_id}`
+            `${environment.baseURL}/api/search-subcategory/${sub_category_id}`
         )
     }
 
     getSearchByCategoriesAPI(category_id){
         return this.http.get<any>(
-            `http://localhost:8000/api/search-category/${category_id}`
+            `${environment.baseURL}/api/search-category/${category_id}`
         )
     }
 
     getSearchByNameAPI(name){
         if (!name) {
             return this.http.get<any>(
-                'http://localhost:8000/api/products'
+                `${environment.baseURL}/api/products`
             );
         }
         return this.http.get<any>(
-            `http://localhost:8000/api/search-name/${name}`
+            `${environment.baseURL}/api/search-name/${name}`
         )
     }
 
     postPayment(requestCart) {
         return this.http.post<any>(
-            'http://localhost:8000/api/orders',
+            `${environment.baseURL}/api/orders`,
             {
                 carts:requestCart
             }

@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './user.model';
+import { environment } from '../../environments/environment';
 
 export interface LoginResponseData {
     access_token:string;
@@ -32,7 +33,7 @@ export class LoginService {
     login(email:string, password:string) {
         return this.http
         .post<LoginResponseData>(
-            'http://localhost:8000/api/auth/login',
+            `${environment.baseURL}/api/auth/login`,
             {
                 email:email,
                 password:password
@@ -56,7 +57,7 @@ export class LoginService {
     register(name:string, email:string, password:string, password_confirmation:string){
         return this.http
         .post<RegisterResponseData>(
-            'http://localhost:8000/api/auth/register',
+            `${environment.baseURL}/api/auth/register`,
             {
                 name:name,
                 email:email,
