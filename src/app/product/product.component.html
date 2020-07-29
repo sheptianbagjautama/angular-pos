@@ -44,7 +44,10 @@
             (click)="onSearchSubCategory(subcategory.id)"
           >
             <div class="card-sub-categories">
-              <img [src]="subcategory.image" [alt]="subcategory.name" />
+              <!-- Change to this If load from public/products laravel -->
+              <!-- <img [src]="subcategory.image" [alt]="subcategory.name" /> -->
+              <!-- I use this way because heroku dont provide for save image  -->
+              <img [src]="'assets/subcategories/' + i + '.png'" [alt]="subcategory.name" />
               {{ subcategory.name | titlecase }}
             </div>
           </div>
@@ -71,7 +74,11 @@
                 <i class="fa fa-heart-o" aria-hidden="true"></i>
               </span>
               <div class="card-products" (click)="AddToCart(product)">
-                <img [src]="product.image" [alt]="product.name" />
+
+                <!-- Change to this If load from public/products laravel -->
+                <!-- <img [src]="product.image" [alt]="product.name" /> -->
+              <!-- I use this way because heroku dont provide for save image  -->
+              <img [src]="'assets/products/' + i + '.png'" [alt]="product.name" />
                 {{ product.name }}
   
                 <div
