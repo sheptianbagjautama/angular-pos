@@ -26,13 +26,13 @@
                 placeholder="Search by products"
               />
             </div>
-        </div>
+          </div>
 
-      
-
-        <div class="col-md-6"> 
-          <button class="btn btn-clear btn-block" (click)="onClearFilter()">Clear Filter</button>
-        </div>
+          <div class="col-md-6">
+            <button class="btn btn-clear btn-block" (click)="onClearFilter()">
+              Clear Filter
+            </button>
+          </div>
         </div>
       </section>
 
@@ -44,10 +44,13 @@
             (click)="onSearchSubCategory(subcategory.id)"
           >
             <div class="card-sub-categories">
-              <!-- Change to this If load from public/products laravel -->
-              <img [src]="subcategory.image" [alt]="subcategory.name" />
+              <!-- Change to this If load from public/subcategories laravel -->
+              <!-- <img [src]="subcategory.image" [alt]="subcategory.name" /> -->
               <!-- I use this way because heroku dont provide for save image  -->
-              <!-- <img [src]="'assets/subcategories/' + i + '.png'" [alt]="subcategory.name" /> -->
+              <img
+                [src]="'assets/subcategories/' + i + '.png'"
+                [alt]="subcategory.name"
+              />
               {{ subcategory.name | titlecase }}
             </div>
           </div>
@@ -56,80 +59,89 @@
 
       <section class="wrapper-products">
         <div class="row">
-         <ng-container *ngIf="isLoadingProduct else elseProduct">
-           <div class="wrapper-no-product">
-            <img src="assets/no-product.gif" alt="No Product">
-           </div>
-         </ng-container>
-
-         <ng-template #elseProduct>
-          <ng-container *ngIf="products.length > 0; else elseProducts">
-            <div class="col-6 col-lg-4 col-md-4 col-xl-3" *ngFor="let product of products; let i = index" >
-              <span
-                class="notify-badge-discount"
-                *ngIf="product.discount !== null"
-                >Discount {{ product.discount }}%</span
-              >
-              <span class="notify-badge-wishlist">
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-              </span>
-              <div class="card-products" (click)="AddToCart(product)">
-
-                <!-- Change to this If load from public/products laravel -->
-                <img [src]="product.image" [alt]="product.name" />
-              <!-- I use this way because heroku dont provide for save image  -->
-              <!-- <img [src]="'assets/products/' + i + '.png'" [alt]="product.name" /> -->
-                {{ product.name }}
-  
-                <div
-                  *ngIf="
-                    product.discount !== null;
-                    then thenBlock;
-                    else elseBlock
-                  "
-                ></div>
-  
-                <ng-template #thenBlock>
-                  <span class="text-discount">{{
-                    product.original_price | currency: "Rp. "
-                  }}</span>
-                  <span>{{ product.discount_price | currency: "Rp. " }}</span>
-                </ng-template>
-  
-                <ng-template #elseBlock>
-                  <span>{{ product.original_price | currency: "Rp. " }}</span>
-                </ng-template>
-              </div>
+          <ng-container *ngIf="isLoadingProduct; else elseProduct">
+            <div class="wrapper-no-product">
+              <img src="assets/no-product.gif" alt="No Product" />
             </div>
           </ng-container>
-  
+
+          <ng-template #elseProduct>
+            <ng-container *ngIf="products.length > 0; else elseProducts">
+              <div
+                class="col-6 col-lg-4 col-md-4 col-xl-3"
+                *ngFor="let product of products; let i = index"
+              >
+                <span
+                  class="notify-badge-discount"
+                  *ngIf="product.discount !== null"
+                  >Discount {{ product.discount }}%</span
+                >
+                <span class="notify-badge-wishlist">
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                </span>
+                <div class="card-products" (click)="AddToCart(product)">
+                  <!-- Change to this If load from API laravel -->
+                  <!-- <img [src]="product.image" [alt]="product.name" /> -->
+                  <!-- I use this way because heroku dont provide for save image  -->
+                  <img
+                    [src]="'assets/products/' + product.image"
+                    [alt]="product.name"
+                  />
+                  {{ product.name }}
+
+                  <div
+                    *ngIf="
+                      product.discount !== null;
+                      then thenBlock;
+                      else elseBlock
+                    "
+                  ></div>
+
+                  <ng-template #thenBlock>
+                    <span class="text-discount">{{
+                      product.original_price | currency: "Rp. "
+                    }}</span>
+                    <span>{{ product.discount_price | currency: "Rp. " }}</span>
+                  </ng-template>
+
+                  <ng-template #elseBlock>
+                    <span>{{ product.original_price | currency: "Rp. " }}</span>
+                  </ng-template>
+                </div>
+              </div>
+            </ng-container>
+
             <ng-template #elseProducts>
               <div class="col-md-12 wrapper-no-products">
-                <img src="assets/no-food.png" alt="No Food">
+                <img src="assets/no-food.png" alt="No Food" />
                 <span>No Food Or Drink !</span>
               </div>
             </ng-template>
-         </ng-template>
-
+          </ng-template>
         </div>
       </section>
     </div>
     <div class="col-md-4 wrapper-rightbar-product">
       <section class="wrapper-carts">
         <div class="col-12" class="wrapper-col-carts">
-          <table class="table table-responsive" *ngIf="carts.length > 0; else elseCart">
+          <table
+            class="table table-responsive"
+            *ngIf="carts.length > 0; else elseCart"
+          >
             <thead>
               <tr>
                 <th class="column-no" scope="col">No</th>
                 <th class="column-name" scope="col">Name</th>
-                <th class="column-qty" scope="col" style="text-align: center;">Qty</th>
+                <th class="column-qty" scope="col" style="text-align: center;">
+                  Qty
+                </th>
                 <th class="column-total" scope="col">Price</th>
                 <th class="column-delete" scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let cart of carts; let i = index">
-                <th class="column-no" scope="row">{{ i+1 }}</th>
+                <th class="column-no" scope="row">{{ i + 1 }}</th>
                 <td class="column-name">{{ cart.name }}</td>
                 <td class="column-qty">
                   <div class="wrapper-input-qty">
@@ -143,7 +155,7 @@
                       class="input-qty-cart"
                       [value]="cart.qty"
                       min="1"
-                      (keyup)="onChangeQtyCart(cart,$event)"
+                      (keyup)="onChangeQtyCart(cart, $event)"
                     />
                     <i
                       class="fa fa-plus plus-cart"
@@ -152,15 +164,22 @@
                     ></i>
                   </div>
                 </td>
-                <td class="column-total">{{ cart.total | currency: "Rp. " }}</td>
-                <td class="column-delete"><i class="fa fa-trash trash-cart" (click)="onDeleteCart(cart)"></i></td>
+                <td class="column-total">
+                  {{ cart.total | currency: "Rp. " }}
+                </td>
+                <td class="column-delete">
+                  <i
+                    class="fa fa-trash trash-cart"
+                    (click)="onDeleteCart(cart)"
+                  ></i>
+                </td>
               </tr>
             </tbody>
           </table>
 
           <ng-template #elseCart>
             <div class="wrapper-nocart">
-              <img src="assets/nocart.png" alt="No Cart">
+              <img src="assets/nocart.png" alt="No Cart" />
               <span>Cart is empty !</span>
             </div>
           </ng-template>
@@ -174,7 +193,11 @@
             <div class="row container-payments">
               <div class="col-12">
                 <ng-container *ngIf="isLoadingPayment; else elsePaymentButton">
-                  <button type="button" class="btn btn-block btn-payment" disabled>
+                  <button
+                    type="button"
+                    class="btn btn-block btn-payment"
+                    disabled
+                  >
                     <img
                       src="assets/spinner.gif"
                       class="loading-spinner"
@@ -184,14 +207,29 @@
                 </ng-container>
 
                 <ng-template #elsePaymentButton>
-                  <button type="button" class="btn btn-block btn-payment" *ngIf="total_price > 0" (click)="onPayment()">
-                    Pay {{ total_price | currency:'Rp. ' }} ( {{ total_qty }} Qty ) 
+                  <button
+                    type="button"
+                    class="btn btn-block btn-payment"
+                    *ngIf="total_price > 0"
+                    (click)="onPayment()"
+                  >
+                    Pay {{ total_price | currency: "Rp. " }} (
+                    {{ total_qty }} Qty )
                   </button>
-                  <button type="button" class="btn btn-block btn-payment" *ngIf="total_price == 0" disabled>
+                  <button
+                    type="button"
+                    class="btn btn-block btn-payment"
+                    *ngIf="total_price == 0"
+                    disabled
+                  >
                     Pay
                   </button>
                 </ng-template>
-                <button type="button" class="btn btn-block btn-cancel-payment" (click)="onCancelCart()">
+                <button
+                  type="button"
+                  class="btn btn-block btn-cancel-payment"
+                  (click)="onCancelCart()"
+                >
                   Cancel
                 </button>
               </div>
