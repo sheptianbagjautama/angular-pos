@@ -45,9 +45,9 @@
           >
             <div class="card-sub-categories">
               <!-- Change to this If load from public/products laravel -->
-              <!-- <img [src]="subcategory.image" [alt]="subcategory.name" /> -->
+              <img [src]="subcategory.image" [alt]="subcategory.name" />
               <!-- I use this way because heroku dont provide for save image  -->
-              <img [src]="'assets/subcategories/' + i + '.png'" [alt]="subcategory.name" />
+              <!-- <img [src]="'assets/subcategories/' + i + '.png'" [alt]="subcategory.name" /> -->
               {{ subcategory.name | titlecase }}
             </div>
           </div>
@@ -76,9 +76,9 @@
               <div class="card-products" (click)="AddToCart(product)">
 
                 <!-- Change to this If load from public/products laravel -->
-                <!-- <img [src]="product.image" [alt]="product.name" /> -->
+                <img [src]="product.image" [alt]="product.name" />
               <!-- I use this way because heroku dont provide for save image  -->
-              <img [src]="'assets/products/' + i + '.png'" [alt]="product.name" />
+              <!-- <img [src]="'assets/products/' + i + '.png'" [alt]="product.name" /> -->
                 {{ product.name }}
   
                 <div
